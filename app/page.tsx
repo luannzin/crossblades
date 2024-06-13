@@ -2,7 +2,9 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import PlayIcon from "./(icons)/Play";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import getMenuMessage from "./(utils)/getMenuMessage";
+import SettingsIcon from "./(icons)/Settings";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
@@ -100,8 +102,15 @@ export default function Home() {
               </motion.span>
             </AnimatePresence>
 
-            <div className="flex flex-col gap-4">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setActiveTab(2);
+              }}
+              className="flex flex-col gap-4"
+            >
               <motion.input
+                autoFocus
                 initial={{
                   padding: "0px",
                   width: "full",
@@ -123,6 +132,7 @@ export default function Home() {
               />
 
               <motion.button
+                type="submit"
                 disabled={!username}
                 initial={{
                   y: 80,
@@ -141,12 +151,11 @@ export default function Home() {
                   stiffness: 200,
                   damping: 20,
                 }}
-                onClick={() => setActiveTab(2)}
                 className="py-3 rounded-lg bg-black text-zinc-200 w-full text-xl "
               >
                 Confirmar
               </motion.button>
-            </div>
+            </form>
           </div>
         </motion.main>
       )}
@@ -172,11 +181,92 @@ export default function Home() {
             type: "tween",
             duration: 0.4,
           }}
-          className="w-screen h-screen flex items-center justify-center text-black"
+          className="w-screen h-screen flex flex-col gap-4 items-center justify-center text-black"
         >
-          <div className="flex flex-col gap-8 w-fit">
-            <span className="text-6xl font-thin ">bem vindo, {username}</span>
-          </div>
+          <motion.span
+            initial={{
+              scale: 1,
+            }}
+            animate={{
+              y: -50,
+              scale: 0.75,
+            }}
+            transition={{
+              delay: 0.5,
+              type: "spring",
+              mass: 0.25,
+              stiffness: 200,
+              damping: 20,
+            }}
+            className="text-6xl font-thin "
+          >
+            {getMenuMessage()}, {username}
+          </motion.span>
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 1.25,
+              filter: "blur(6px)",
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              filter: "blur(0px)",
+            }}
+            transition={{
+              delay: 0.75,
+              type: "spring",
+              mass: 0.25,
+              stiffness: 200,
+              damping: 20,
+            }}
+            className="w-[365px] flex flex-col items-center gap-16"
+          >
+            <div className="w-full flex flex-col gap-4">
+              <motion.button
+                whileTap={{
+                  scale: 0.9,
+                }}
+                transition={{
+                  type: "spring",
+                  mass: 0.01,
+                  stiffness: 200,
+                  damping: 3,
+                }}
+                className="w-full h-14 flex items-center justify-center rounded-xl bg-zinc-200 border border-black stroke-black hover:bg-zinc-300/50 transition-colors duration-300 ease-in-out"
+              >
+                Ranqueada
+              </motion.button>
+              <motion.button
+                whileTap={{
+                  scale: 0.9,
+                }}
+                transition={{
+                  type: "spring",
+                  mass: 0.01,
+                  stiffness: 200,
+                  damping: 3,
+                }}
+                className="w-full h-14 flex items-center justify-center rounded-xl bg-zinc-200 border border-black stroke-black hover:bg-zinc-300/50 transition-colors duration-300 ease-in-out"
+              >
+                Contra um amigo
+              </motion.button>
+            </div>
+            <div className="flex items-center justify-between w-full">
+              <div className="flex gap-2 items-center">
+                <div className="group cursor-pointer hover:bg-zinc-400/15 rounded-xl transition-colors duration-150">
+                  <div className="p-2 group-hover:rotate-12 transition-transform duration-300">
+                    <SettingsIcon className="w-6 h-6 stroke-black font-thin" />
+                  </div>
+                </div>
+                <div>Ajuda</div>
+              </div>
+              <div className="font-light">
+                <strong>1 </strong>
+                <span>jogador online</span>
+              </div>
+            </div>
+          </motion.div>
         </motion.main>
       )}
     </AnimatePresence>
