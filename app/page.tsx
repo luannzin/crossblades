@@ -46,7 +46,7 @@ export default function Home() {
             <span className="text-6xl font-thin ">crossblades</span>
             <motion.button
               style={{
-                filter: "drop-shadow(0px 4px 0px #040404);",
+                filter: "drop-shadow(0px 4px 0px #040404)",
               }}
               whileTap={{
                 scale: 0.9,
