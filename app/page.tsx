@@ -188,7 +188,7 @@ export default function Home() {
               scale: 1,
             }}
             animate={{
-              y: -50,
+              y: -42,
               scale: 0.75,
             }}
             transition={{
@@ -198,7 +198,7 @@ export default function Home() {
               stiffness: 200,
               damping: 20,
             }}
-            className="text-6xl font-thin "
+            className="text-6xl font-thin"
           >
             {getMenuMessage()}, {username}
           </motion.span>
@@ -224,6 +224,12 @@ export default function Home() {
           >
             <div className="w-full flex flex-col gap-4">
               <motion.button
+                initial={{
+                  filter: "drop-shadow(0px 0px #000)",
+                }}
+                whileHover={{
+                  filter: "drop-shadow(0px 4px 0px #040404)",
+                }}
                 whileTap={{
                   scale: 0.9,
                 }}
@@ -233,11 +239,17 @@ export default function Home() {
                   stiffness: 200,
                   damping: 3,
                 }}
-                className="w-full h-14 flex items-center justify-center rounded-xl bg-zinc-200 border border-black stroke-black hover:bg-zinc-300/50 transition-colors duration-300 ease-in-out"
+                className="w-full h-14 flex items-center justify-center rounded-xl bg-zinc-200 border border-black stroke-black"
               >
                 Ranqueada
               </motion.button>
               <motion.button
+                initial={{
+                  filter: "drop-shadow(0px 0px #000)",
+                }}
+                whileHover={{
+                  filter: "drop-shadow(0px 4px 0px #040404)",
+                }}
                 whileTap={{
                   scale: 0.9,
                 }}
@@ -247,7 +259,7 @@ export default function Home() {
                   stiffness: 200,
                   damping: 3,
                 }}
-                className="w-full h-14 flex items-center justify-center rounded-xl bg-zinc-200 border border-black stroke-black hover:bg-zinc-300/50 transition-colors duration-300 ease-in-out"
+                className="w-full h-14 flex items-center justify-center rounded-xl bg-zinc-200 border border-black stroke-black "
               >
                 Contra um amigo
               </motion.button>
@@ -259,7 +271,6 @@ export default function Home() {
                     <SettingsIcon className="w-6 h-6 stroke-black font-thin" />
                   </div>
                 </div>
-                <div>Ajuda</div>
               </div>
               <div className="font-light">
                 <strong>1 </strong>
