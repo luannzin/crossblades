@@ -67,7 +67,7 @@ export default function Home() {
         <motion.main
           key={1}
           initial={{
-            x: 125,
+            x: -125,
             opacity: 0,
             filter: "blur(6px)",
           }}
@@ -112,7 +112,7 @@ export default function Home() {
                 }}
                 transition={{
                   type: "tween",
-                  duration: 0.5,
+                  duration: 0.65,
                   delay: 0.4,
                   ease: "easeInOut",
                 }}
