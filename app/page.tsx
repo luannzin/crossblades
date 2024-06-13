@@ -120,9 +120,11 @@ export default function Home() {
                   width: "600px",
                 }}
                 transition={{
-                  type: "tween",
-                  duration: 0.65,
-                  delay: 0.4,
+                  type: "spring",
+                  delay: 0.35,
+                  mass: 0.25,
+                  stiffness: 75,
+                  damping: 10,
                   ease: "easeInOut",
                 }}
                 value={username}
@@ -192,7 +194,7 @@ export default function Home() {
               scale: 0.75,
             }}
             transition={{
-              delay: 0.5,
+              delay: 0.35,
               type: "spring",
               mass: 0.25,
               stiffness: 200,
@@ -214,7 +216,7 @@ export default function Home() {
               filter: "blur(0px)",
             }}
             transition={{
-              delay: 0.75,
+              delay: 0.6,
               type: "spring",
               mass: 0.25,
               stiffness: 200,
