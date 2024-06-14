@@ -1,5 +1,5 @@
 const Ranked = () => {
-  <main>batata</main>;
+  return <main>batata</main>;
 };
 
 export default Ranked;
