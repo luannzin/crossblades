@@ -7,8 +7,12 @@ import getMenuMessage from "./(utils)/getMenuMessage";
 import SettingsIcon from "./(icons)/Settings";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [username, setUsername] = useState("");
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("@crossblades:username") ? 2 : 0
+  );
+  const [username, setUsername] = useState(
+    localStorage.getItem("@crossblades:username") || ""
+  );
 
   useEffect(() => {
     if (username.trim() === "") {
@@ -105,6 +109,7 @@ export default function Home() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                localStorage.setItem("@crossblades:username", username);
                 setActiveTab(2);
               }}
               className="flex flex-col gap-4"
